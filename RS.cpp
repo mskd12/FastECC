@@ -71,7 +71,7 @@ void EncodeReedSolomon (size_t N, size_t SIZE)
 int main (int argc, char **argv)
 {
     size_t N = 1<<19;   // NTT order
-    size_t SIZE = 2052; // Block size, in bytes
+    size_t SIZE = 32; // Block size, in bytes
                         // 1 GB total
 
     if (argc>=2 && argv[1][0]=='.') {
@@ -83,5 +83,5 @@ int main (int argc, char **argv)
     if (argc>=3)  SIZE = atoi(argv[2]);
 
     // InitLargePages();
-    EncodeReedSolomon<uint32_t,0xFFF00001> (N,SIZE/sizeof(uint32_t));
+    EncodeReedSolomon<uint32_t,0xFFFFFFFF> (N,SIZE/sizeof(uint32_t));
 }

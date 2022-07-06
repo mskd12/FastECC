@@ -88,6 +88,7 @@ void time_it (double size, const char* name, std::function<void()> Code)
     GetProcessKernelUserTimes (KernelTime+1, UserTime+1);
     double wall_time = GetTimer()-start;
     double cpu_time  = (UserTime[1] - UserTime[0]) * 1000;
+    printf("wall: %.0lf\n", wall_time);
     printf("%s: %.0lf ms = %.0lf MiB/s,  cpu %.0lf ms = %.0lf%%,  os %.0lf ms\n",
         name, wall_time, (size / wall_time)*1000 / (1<<20),
         cpu_time, cpu_time/wall_time*100,
